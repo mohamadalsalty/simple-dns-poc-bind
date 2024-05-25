@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  bind9:
+    image: internetsystemsconsortium/bind9:9.16
+    container_name: bind9
+    volumes:
+      - ./config/named.conf:/etc/bind/named.conf
+      - ./config/db.example.com:/etc/bind/db.example.com
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    restart: unless-stopped
